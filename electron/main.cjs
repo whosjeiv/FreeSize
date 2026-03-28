@@ -1,12 +1,6 @@
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
-import path from 'path';
-import { fileURLToPath } from 'url';
-import fs from 'fs/promises';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const path = require('path');
+const fs = require('fs/promises');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -18,10 +12,11 @@ function createWindow() {
     height: 700,
     minWidth: 800,
     minHeight: 600,
+    icon: path.join(__dirname, '..', 'public', 'icon.png'),
     titleBarStyle: 'hidden',
     titleBarOverlay: {
-      color: '#0f172a',
-      symbolColor: '#f8fafc',
+      color: '#0f1629',
+      symbolColor: '#f0f4ff',
       height: 40
     },
     webPreferences: {
@@ -32,10 +27,12 @@ function createWindow() {
   });
 
   if (isDev) {
+    // Port might be 5173, 5174 or 5175 because we spawned multiple Vite instances.
+    // Let's rely on Vite creating the .env or just use 5173 which should be open
     mainWindow.loadURL('http://localhost:5173');
     // mainWindow.webContents.openDevTools();
   } else {
-    mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
+    mainWindow.loadFile(path.join(__dirname, '..', 'dist', 'index.html'));
   }
 }
 
@@ -54,10 +51,10 @@ app.on('window-all-closed', function () {
 // IPC handler for saving files
 ipcMain.handle('save-image', async (event, { dataURL, desiredName }) => {
   const { canceled, filePath } = await dialog.showSaveDialog(mainWindow, {
-    title: 'Save Resized Image',
+    title: 'Guardar imagen redimensionada',
     defaultPath: desiredName || 'resized-image.png',
     filters: [
-      { name: 'Images', extensions: ['png', 'jpg', 'jpeg', 'webp'] }
+      { name: 'Imágenes', extensions: ['png', 'jpg', 'jpeg', 'webp'] }
     ]
   });
 

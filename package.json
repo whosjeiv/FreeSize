@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "main": "electron-main.cjs",
+  "main": "electron/main.cjs",
   "scripts": {
     "vite:dev": "vite",
-    "dev": "concurrently \"npm run vite:dev\" \"wait-on tcp:5173 && node launch.cjs\"",
+    "dev": "concurrently \"npm run vite:dev\" \"wait-on tcp:5173 && node scripts/launch.cjs\"",
     "build": "vite build",
     "preview": "vite preview"
   },
