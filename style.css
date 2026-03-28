@@ -572,7 +572,7 @@ body {
   visibility: hidden;
   transform: translateY(-8px);
   transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
-  max-height: 320px;
+  max-height: 600px;
   overflow-y: auto;
   z-index: 99999;
   pointer-events: none;
