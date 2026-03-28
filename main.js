@@ -170,17 +170,77 @@ dropdownTrigger.addEventListener('click', (e) => {
   }
 });
 
-// Close dropdown when clicking outside
-document.addEventListener('click', (e) => {
-  if (dropdownOpen && !platformDropdown.contains(e.target) && !dropdownMenu.contains(e.target)) {
-    closeDropdown();
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (dropdownOpen) closeDropdown();
+    if (unitDropdownOpen) closeUnitDropdown();
   }
 });
 
-// Close on Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && dropdownOpen) {
+// ===== Unit Dropdown Logic =====
+const unitDropdown = document.getElementById('unit-dropdown');
+const unitTrigger = document.getElementById('unit-trigger');
+const unitMenu = document.getElementById('unit-menu');
+const unitLabel = document.getElementById('unit-label');
+const dimUnits = document.querySelectorAll('.dim-unit');
+const unitItems = document.querySelectorAll('.unit-item');
+
+let unitDropdownOpen = false;
+
+function openUnitDropdown() {
+  unitDropdown.classList.add('open');
+  unitDropdownOpen = true;
+}
+
+function closeUnitDropdown() {
+  unitDropdown.classList.remove('open');
+  unitDropdownOpen = false;
+}
+
+unitTrigger.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (unitDropdownOpen) {
+    closeUnitDropdown();
+  } else {
+    // Close other dropdowns
+    if (dropdownOpen) closeDropdown();
+    openUnitDropdown();
+  }
+});
+
+unitItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const unit = item.dataset.unit;
+    
+    // Update active style and checkmark
+    unitItems.forEach(i => {
+      i.classList.remove('active');
+      i.querySelector('.unit-check').style.opacity = '0';
+      if (i.dataset.unit === 'px') i.querySelector('.unit-check').style.stroke = 'currentColor'; // reset to neutral
+    });
+    
+    item.classList.add('active');
+    item.querySelector('.unit-check').style.opacity = '1';
+    item.querySelector('.unit-check').style.stroke = 'var(--accent)';
+    
+    // Update global UI labels
+    unitLabel.textContent = unit;
+    dimUnits.forEach(el => el.textContent = unit);
+    
+    closeUnitDropdown();
+  });
+});
+
+// Update global document click to handle unit dropdown out-clicks
+document.addEventListener('click', (e) => {
+  // Existing platform dropdown
+  if (dropdownOpen && !platformDropdown.contains(e.target) && !dropdownMenu.contains(e.target)) {
     closeDropdown();
+  }
+  // New unit dropdown
+  if (unitDropdownOpen && !unitDropdown.contains(e.target)) {
+    closeUnitDropdown();
   }
 });
 

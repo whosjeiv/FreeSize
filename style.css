@@ -806,6 +806,99 @@ body {
   flex-shrink: 0;
 }
 
+/* Unit Dropdown Tailwind-style */
+.unit-dropdown {
+  position: relative;
+  z-index: 90;
+}
+
+.unit-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 11px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.unit-trigger:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-hover);
+}
+
+.unit-trigger:focus,
+.unit-dropdown.open .unit-trigger {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-dim);
+}
+
+.unit-chevron {
+  color: var(--text-muted);
+  transition: transform var(--transition);
+}
+
+.unit-dropdown.open .unit-chevron {
+  transform: rotate(180deg);
+}
+
+.unit-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: #ffffff; /* User reference image has light bg for this specifically, but let's stick to our dark theme which fits the app */
+  background: var(--bg-elevated); /* Override with dark theme */
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0,0,0,0.3);
+  padding: 4px;
+  min-width: 100px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+}
+
+.unit-dropdown.open .unit-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.unit-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  text-align: left;
+}
+
+.unit-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.unit-item.active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
 /* Lock Button */
 .lock-btn {
   width: 36px;
