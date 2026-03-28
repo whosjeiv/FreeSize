@@ -1,6 +1,21 @@
-# ⚡ FreeSize
+<div align="center">
+  <img src="public/icon.png" alt="FreeSize Logo" width="128" height="128">
 
-**FreeSize** es la herramienta de escritorio definitiva para redimensionar y adaptar tus imágenes a cualquier red social en segundos. Diseñada con una interfaz moderna, limpia y altamente profesional, te permite preparar tu contenido visual para múltiples plataformas sin complicaciones, de manera rápida, local y sin perder la calidad de tu trabajo original.
+  <h1>FreeSize</h1>
+
+  <p><strong>La herramienta definitiva de escritorio para redimensionar y adaptar tus imágenes a cualquier red social en segundos de manera profesional, rápida y segura.</strong></p>
+
+  <p>
+    <a href="#-características-principales">Características</a> •
+    <a href="#%EF%B8%8F-stack-tecnológico">Tecnologías</a> •
+    <a href="#-cómo-empezar-a-usarlo">Instalación</a> •
+    <a href="https://github.com/whosjeiv/FreeSize" target="_blank">Repositorio</a>
+  </p>
+</div>
+
+---
+
+**FreeSize** te permite preparar tu contenido visual para múltiples plataformas sin complicaciones, de manera rápida, local y sin perder la calidad de tu trabajo original, todo desde una interfaz moderna, limpia y altamente profesional.
 
 ![FreeSize Demo](https://via.placeholder.com/800x450.png?text=FreeSize+-+Redimensiona+Tus+Im%C3%A1genes+Como+Un+Pro)
 
