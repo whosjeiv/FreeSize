@@ -81,7 +81,6 @@ body {
   width: 20px;
   height: 20px;
   object-fit: contain;
-  filter: drop-shadow(0 0 4px var(--accent-glow));
 }
 
 .titlebar-name {
@@ -146,13 +145,12 @@ body {
   width: 72px;
   height: 72px;
   object-fit: contain;
-  filter: drop-shadow(0 0 16px var(--accent-glow));
   animation: logoPulse 3s ease-in-out infinite;
 }
 
 @keyframes logoPulse {
-  0%, 100% { filter: drop-shadow(0 0 16px var(--accent-glow)); transform: scale(1); }
-  50% { filter: drop-shadow(0 0 24px rgba(0, 212, 170, 0.5)); transform: scale(1.03); }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 
 .hero-title {
@@ -409,7 +407,6 @@ body {
   width: 28px;
   height: 28px;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px var(--accent-glow));
 }
 
 .sidebar-app-name {
